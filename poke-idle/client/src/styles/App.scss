@@ -1,0 +1,32 @@
+@import "Variables.scss";
+
+@font-face {
+  font-family: "Pixelify";
+  src: url("../fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf");
+}
+
+#root {
+  font-family: "Pixelify", Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  max-width: 1280px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  background-color: $off-white;
+}
+
+body {
+  max-width: 1280px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  background-color: $off-white;
+}
