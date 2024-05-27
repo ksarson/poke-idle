@@ -6,4 +6,4 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-root.render((<App />) as React.ReactNode);
+root.render(<App />);
