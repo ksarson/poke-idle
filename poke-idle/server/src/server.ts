@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
+import getPokemonsList from "./endpoints/getPokemonsList.js";
+//import populatePokemon from "./databaseScripts/populatePokemon.js";
 
 const app = express();
 
@@ -20,10 +22,11 @@ async function startServer() {
     const db = client.db(dbName).databaseName;
     console.log(`Cluster: ${db}`);
 
-    // Define routes here
-    app.get("/", (_req, res) => {
-      res.send("Hello, World!");
-    });
+    // Use the PokemonsList endpoint
+    app.get("/api/pokemon/list", getPokemonsList);
+
+    // Populate MongoDb Pokemon collection
+    // app.get("/api/pokemon/list", populatePokemon);
 
     // Start the Express server
     app.listen(process.env.PORT, () => {
