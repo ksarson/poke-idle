@@ -24,17 +24,13 @@ interface PokemonList {
 
 const populatePokemonData = async (_req: Request, res: Response) => {
   try {
-    console.log("here");
-    // Connect to the Pokemon collection
     const db: Db = client.db(dbName);
     const collection = db.collection(collectionName);
 
-    // Fetch the list of all Pokémon
     const pokemonList: PokemonList = await P.getPokemonsList({ limit: 1025 });
     const pokemonNamesList = pokemonList.results.map((pokemon) => pokemon.name);
     console.log("pokemonNamesList: ", pokemonNamesList);
 
-    // Iterate through the list and fetch data for each Pokémon
     for (const pokemonName of pokemonNamesList) {
       const pokemonData = await fetchPokemonData(pokemonName);
       await collection.updateOne(

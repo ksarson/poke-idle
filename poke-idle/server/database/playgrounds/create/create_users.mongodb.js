@@ -2,7 +2,7 @@
 
 use("pokeIdleDb");
 
-db.createCollection("players", {
+db.createCollection("users", {
   validator: {
     $jsonSchema: {
       bsonType: "object",

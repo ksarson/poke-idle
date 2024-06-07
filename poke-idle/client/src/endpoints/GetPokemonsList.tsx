@@ -1,7 +1,12 @@
-const fetchPokemonsList = async () => {
+const getPokemonsList = async () => {
   try {
     console.log("Fetching pokemon list from server...");
-    const response = await fetch("http://localhost:3000/api/pokemon/list");
+    const response = await fetch("http://localhost:3000/api/pokemon/list", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -12,4 +17,4 @@ const fetchPokemonsList = async () => {
   }
 };
 
-export default fetchPokemonsList;
+export default getPokemonsList;

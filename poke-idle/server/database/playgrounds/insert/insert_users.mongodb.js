@@ -2,7 +2,7 @@
 
 use("pokeIdleDb");
 
-db.players.insertOne({
+db.users.insertOne({
   username: "TheSavageSnipez",
   passwordHash: "hashed_password",
   createdAt: new Date(),

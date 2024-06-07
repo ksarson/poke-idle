@@ -1,10 +1,10 @@
 import "../../styles/Main.scss";
 import React, { useEffect } from "react";
-import fetchPokemonsList from "../../endpoints/PokemonsList";
+import getPokemonsList from "../../endpoints/GetPokemonsList";
 
 const Main: React.FC = () => {
   useEffect(() => {
-    fetchPokemonsList();
+    getPokemonsList();
   }, []);
 
   return <main>Main</main>;

@@ -1,13 +1,20 @@
 import "./styles/App.scss";
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
+import Login from "./components/Login/Login";
 
 const App: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
   return (
     <>
       <Header />
-      <Main />
+      {isLoggedIn ? <Main /> : <Login onLoginSuccess={handleLoginSuccess} />}
     </>
   );
 };
