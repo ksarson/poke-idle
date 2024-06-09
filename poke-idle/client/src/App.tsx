@@ -1,8 +1,9 @@
 import "./styles/App.scss";
 import React, { useState } from "react";
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import Login from "./components/Login/Login";
+import Header from "./components/PageStructure/Header";
+import Main from "./components/PageStructure/Main";
+import LoginLandingPage from "./components/LoginLandingPage/LoginLandingPage";
+import Footer from "./components/PageStructure/Footer";
 
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -14,7 +15,12 @@ const App: React.FC = () => {
   return (
     <>
       <Header />
-      {isLoggedIn ? <Main /> : <Login onLoginSuccess={handleLoginSuccess} />}
+      {isLoggedIn ? (
+        <Main />
+      ) : (
+        <LoginLandingPage onLoginSuccess={handleLoginSuccess} />
+      )}
+      <Footer />
     </>
   );
 };

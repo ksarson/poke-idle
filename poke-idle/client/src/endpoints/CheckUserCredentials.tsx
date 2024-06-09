@@ -1,4 +1,4 @@
-const checkUserCredentials = async (
+export const checkUserCredentials = async (
   username: string,
   password: string,
   onLoginSuccess: () => void
@@ -17,15 +17,23 @@ const checkUserCredentials = async (
       }),
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(data.message || `HTTP error! status: ${response.status}`);
     }
 
-    const data = await response.json();
     console.log("Login Successful:", data);
     onLoginSuccess();
+    return data;
   } catch (error) {
-    console.error("User does not exist:", error);
+    if (error instanceof Error) {
+      console.error("Error logging in:", error.message);
+      return { message: error.message };
+    } else {
+      console.error("Unexpected error:", error);
+      return { message: "An unexpected error occurred." };
+    }
   }
 };
 

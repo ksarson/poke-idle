@@ -13,14 +13,22 @@ const createUser = async (username: string, password: string) => {
       }),
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(data.message || `HTTP error! status: ${response.status}`);
     }
 
-    const data = await response.json();
     console.log("User Created Successfully:", data);
+    return data;
   } catch (error) {
-    console.error("Error Creating User:", error);
+    if (error instanceof Error) {
+      console.error("Error creating account:", error.message);
+      return { message: error.message };
+    } else {
+      console.error("Unexpected error:", error);
+      return { message: "An unexpected error occurred." };
+    }
   }
 };
 

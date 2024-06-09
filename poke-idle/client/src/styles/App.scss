@@ -5,6 +5,16 @@
   src: url("../fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf");
 }
 
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  background-color: $off-white;
+}
+
 #root {
   font-family: "Pixelify", Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
@@ -15,24 +25,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  text-align: center;
-  margin: 0 auto;
-  padding: 0;
-  background-color: $off-white;
-}
-
-body {
-  text-align: center;
-  margin: 0 auto;
-  padding: 0;
-  background-color: $off-white;
 }
 
 main {
   max-width: 1280px;
-  margin: 0.5rem auto;
-  padding: 0;
+  margin: 0 auto;
 }
 
 header {

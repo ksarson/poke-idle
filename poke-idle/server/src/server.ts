@@ -2,10 +2,10 @@ import express from "express";
 import cors from "cors";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import getPokemonsList from "./endpoints/getPokemonsList.js";
-import createUser from "./endpoints/createUser.js";
-import login from "./endpoints/login.js";
-//import populatePokemon from "./databaseScripts/populatePokemon.js";
+import getPokemonsList from "./endpoints/get/getPokemonsList.js";
+import createUser from "./endpoints/post/createUser.js";
+import login from "./endpoints/post/login.js";
+//import populatePokemon from "./endpoints/post/populatePokemon.js";
 
 const app = express();
 
@@ -25,17 +25,19 @@ async function startServer() {
     const db = client.db(dbName).databaseName;
     console.log(`Cluster: ${db}`);
 
-    // Use the getPokemonsList endpoint
-    app.get("/api/pokemon/list", getPokemonsList);
-
-    // Populate MongoDb Pokemon collection
+    // Unused endpoints
     // app.get("/api/pokemon/list", populatePokemon);
 
-    // Use the createUser endpoint
+    // POST
     app.post("/api/users/create", createUser);
-
-    // Use the login endpoint
     app.post("/api/users/login", login);
+
+    // PUT
+
+    // GET
+    app.get("/api/pokemon/list", getPokemonsList);
+
+    // DELETE
 
     // Start the Express server
     app.listen(process.env.PORT, () => {

@@ -1,0 +1,74 @@
+@import "Variables.scss";
+
+main {
+  font-size: 1rem;
+  color: $pokemon-dark-blue;
+  height: calc(100% - $header-height - $footer-height);
+}
+
+.login-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-top: 0.5rem;
+}
+
+.login-label {
+  display: block;
+  margin: 0.5rem auto;
+  max-width: calc(600px + (0.5rem * 2));
+}
+
+.login-or-register {
+  cursor: pointer;
+  line-height: 1.1rem;
+  margin: 0.5rem auto;
+  max-width: 300px;
+
+  &:hover {
+    font-size: 1.1rem;
+    color: $pokemon-light-blue;
+  }
+}
+
+.error-message {
+  color: $pokeball-red;
+  margin: 0.5rem auto;
+}
+
+.login-input {
+  display: block;
+  width: 100%;
+
+  @media (max-width: $mobile-max-width) {
+    width: 80%;
+  }
+
+  max-width: 600px;
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid $light-gray;
+  border-radius: 0.25rem;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+.login-page-button {
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  background-color: $pokemon-light-blue;
+  color: $pokeball-white;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $pokemon-dark-blue;
+  }
+}

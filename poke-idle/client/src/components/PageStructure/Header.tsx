@@ -1,4 +1,4 @@
-import "../../styles/Header.scss";
+import "../../styles/PageStructure.scss";
 import React from "react";
 
 const Header: React.FC = () => {

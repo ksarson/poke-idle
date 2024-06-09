@@ -16,14 +16,18 @@ const login = async (_req: Request, res: Response) => {
 
     const { username, password } = _req.body;
     if (!username || !password) {
-      return res
-        .status(400)
-        .json({ message: "Username and password are required." });
+      return res.status(400).json({
+        isSuccessful: false,
+        message: "Username and password are required.",
+      });
     }
 
     const user = await db.collection(collectionName).findOne({ username });
     if (!user) {
-      return res.status(401).json({ message: "Invalid username or password." });
+      return res.status(401).json({
+        isSuccessful: false,
+        message: "Invalid username or password.",
+      });
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
@@ -36,9 +40,11 @@ const login = async (_req: Request, res: Response) => {
   } catch (error) {
     if (error instanceof Error) {
       console.error("Error logging in: ", error.message);
-      res.status(500).json({ message: error.message });
+      res.status(500).json({ isSuccessful: false, message: error.message });
     } else {
-      res.status(500).json({ message: "An unknown error occurred." });
+      res
+        .status(500)
+        .json({ isSuccessful: false, message: "An unknown error occurred." });
     }
   }
 };

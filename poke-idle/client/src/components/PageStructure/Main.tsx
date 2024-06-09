@@ -1,4 +1,4 @@
-import "../../styles/Main.scss";
+import "../../styles/PageStructure.scss";
 import React, { useEffect } from "react";
 import getPokemonsList from "../../endpoints/GetPokemonsList";
 
