@@ -16,7 +16,7 @@ const LoginLandingPage: React.FC<LoginLandingPageProps> = ({
   const [isLogin, setIsLogin] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const passwordPattern =
-    "^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{10,}$";
+    "^(?=.*[0-9])(?=.*[!@#$%^&*?])[a-zA-Z0-9!@#$%^&*?]{10,}$";
 
   useEffect(() => {
     setUsername("");
@@ -43,7 +43,7 @@ const LoginLandingPage: React.FC<LoginLandingPageProps> = ({
 
   return (
     <main>
-      <div className="login-header">{isLogin ? "Login" : "Register"}</div>
+      <h3 className="login-header">{isLogin ? "Login" : "Register"}</h3>
       {isLogin ? (
         <Login
           username={username}
@@ -68,7 +68,7 @@ const LoginLandingPage: React.FC<LoginLandingPageProps> = ({
           passwordPattern={passwordPattern}
         />
       )}
-      <div
+      <h6
         className="login-or-register"
         onClick={() => {
           setIsLogin(!isLogin);
@@ -78,7 +78,7 @@ const LoginLandingPage: React.FC<LoginLandingPageProps> = ({
         {isLogin
           ? "New Player? Register Here!"
           : "Returning Player? Login Here!"}
-      </div>
+      </h6>
     </main>
   );
 };

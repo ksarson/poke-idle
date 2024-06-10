@@ -13,12 +13,13 @@ const Header: React.FC<HeaderProps> = ({ onLogout, isLoggedIn }) => {
   return (
     <header>
       <div className="spacer-div" />
-      <div className="header-text">Pok&eacute; Idle</div>
+      <h1 className="header-text">Pok&eacute; Idle</h1>
       {isLoggedIn && (
         <button className="logout-button" onClick={onLogout}>
-          <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
+          <FontAwesomeIcon icon={faSignOutAlt} />
         </button>
       )}
+      {!isLoggedIn && <div className="spacer-div" />}
     </header>
   );
 };

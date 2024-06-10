@@ -1,7 +1,7 @@
 import "../../styles/LoginLandingPage.scss";
 import React from "react";
 import PropTypes from "prop-types";
-import checkUserCredentials from "../../endpoints/CheckUserCredentials";
+import checkUserCredentials from "../../api/checkUserCredentials";
 
 interface LoginProps {
   username: string;
@@ -42,27 +42,31 @@ const Login: React.FC<LoginProps> = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label className="login-label">
-          Username
-          <input
-            className="login-input"
-            type="text"
-            value={username}
-            onChange={onUsernameChange}
-            required
-          />
-        </label>
-        <label className="login-label">
-          Password
-          <input
-            className={"login-input"}
-            type="password"
-            value={password}
-            onChange={onPasswordChange}
-            required
-          />
-        </label>
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
+        <h6>
+          <label className="login-label">
+            Username
+            <input
+              className="login-input"
+              type="text"
+              value={username}
+              onChange={onUsernameChange}
+              required
+            />
+          </label>
+        </h6>
+        <h6>
+          <label className="login-label">
+            Password
+            <input
+              className={"login-input"}
+              type="password"
+              value={password}
+              onChange={onPasswordChange}
+              required
+            />
+          </label>
+        </h6>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <button className="login-page-button" type="submit">
           Login
         </button>

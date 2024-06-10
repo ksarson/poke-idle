@@ -34,6 +34,12 @@ const login = async (_req: Request, res: Response) => {
     const isPasswordValid = await bcrypt.compare(password, passwordHash);
     const existingUser = await collection.findOne({ username });
     if (existingUser && isPasswordValid) {
+      const loginTs = new Date();
+      await db
+        .collection(collectionName)
+        .updateOne({ username: username }, { $set: { lastLogin: loginTs } });
+      playerInfo.lastLogin = loginTs;
+
       return res.status(200).json({
         isSuccessful: true,
         message: "User Login Successful.",

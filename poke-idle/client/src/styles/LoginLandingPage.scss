@@ -7,7 +7,6 @@ main {
 }
 
 .login-header {
-  font-size: 1.5rem;
   font-weight: 700;
   padding-top: 0.5rem;
 }
@@ -20,14 +19,18 @@ main {
 
 .login-or-register {
   cursor: pointer;
-  line-height: 1.1rem;
-  margin: 0.5rem auto;
-  max-width: 300px;
+  line-height: calc($h6 * 1.1);
+  margin: 6px auto;
+  max-width: calc(600px + (0.5rem * 2));
 
   &:hover {
-    font-size: 1.1rem;
+    font-size: calc($h6 * 1.1);
     color: $pokemon-light-blue;
   }
+}
+
+.creating-account-notif {
+  margin: 0.5rem auto;
 }
 
 .error-message {
@@ -61,10 +64,11 @@ main {
   margin: 0.5rem 1rem;
   padding: 0.5rem 1rem;
   background-color: $pokemon-light-blue;
-  color: $pokeball-white;
+  color: $pokemon-yellow;
   border: none;
   border-radius: 0.25rem;
-  font-size: 1rem;
+  font-size: $h5;
+  font-weight: 700;
   cursor: pointer;
   transition: background-color 0.3s ease;
 

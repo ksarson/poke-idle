@@ -1,8 +1,8 @@
 import "../../styles/LoginLandingPage.scss";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import createUser from "../../endpoints/CreateUser";
-import checkUserCredentials from "../../endpoints/CheckUserCredentials";
+import createUser from "../../api/createUser";
+import checkUserCredentials from "../../api/checkUserCredentials";
 
 interface RegisterProps {
   username: string;
@@ -55,6 +55,7 @@ const Login: React.FC<RegisterProps> = ({
     if (creationResponse.isSuccessful) {
       clearErrorMessage();
     } else {
+      setIsCreatingAccount(false);
       defineErrorMessage(creationResponse.message);
     }
   };
@@ -62,32 +63,36 @@ const Login: React.FC<RegisterProps> = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label className="login-label">
-          Username
-          <input
-            className="login-input"
-            type="text"
-            value={username}
-            onChange={onUsernameChange}
-            required
-          />
-        </label>
-        <label className="login-label">
-          Password
-          <input
-            className={"login-input"}
-            type="password"
-            value={password}
-            onChange={onPasswordChange}
-            required
-            pattern={passwordPattern}
-            title="Password must be at least 10 characters long and contain at least 1 number and 1 special character"
-          />
-        </label>
+        <h6>
+          <label className="login-label">
+            Username
+            <input
+              className="login-input"
+              type="text"
+              value={username}
+              onChange={onUsernameChange}
+              required
+            />
+          </label>
+        </h6>
+        <h6>
+          <label className="login-label">
+            Password
+            <input
+              className={"login-input"}
+              type="password"
+              value={password}
+              onChange={onPasswordChange}
+              required
+              pattern={passwordPattern}
+              title="Password must be at least 10 characters long and contain at least 1 number and 1 special character (!@#$%^&*?)"
+            />
+          </label>
+        </h6>
         {isCreatingAccount && (
-          <div className="account-creation-notif">Creating your account...</div>
+          <p className="creating-account-notif">Creating your account...</p>
         )}
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <button className="login-page-button" type="submit">
           Register
         </button>

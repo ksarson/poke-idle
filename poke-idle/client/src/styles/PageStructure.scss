@@ -3,7 +3,6 @@
 header {
   background-color: $pokemon-light-blue;
   color: $pokemon-yellow;
-  font-size: 3rem;
   font-weight: 700;
   height: $header-height;
   display: flex;
@@ -12,31 +11,29 @@ header {
 
   .spacer-div {
     flex: 1;
+    max-width: 48px;
   }
 
   .header-text {
-    flex: 18;
-
-    @media (max-width: $mobile-max-width) {
-      flex: 6;
-    }
+    flex: 1;
   }
-}
 
-.logout-button {
-  flex: 1;
-  padding: 0;
-  height: 36px;
-  width: 48px;
-  background-color: $pokemon-light-blue;
-  color: $pokemon-yellow;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  .logout-button {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    padding: 4px 4px 0 0;
+    max-width: 48px;
+    background-color: $pokemon-light-blue;
+    color: $pokemon-yellow;
+    font-size: $h3;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 
-  &:hover {
-    background-color: $pokemon-dark-blue;
+    &:hover {
+      background-color: $pokemon-dark-blue;
+    }
   }
 }
 
@@ -46,7 +43,6 @@ main {
 
 footer {
   background-color: $pokemon-light-blue;
-  font-size: 1.25rem;
   line-height: 1.5;
   font-weight: 700;
   color: $pokemon-yellow;
