@@ -1,5 +1,5 @@
 import "./styles/App.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/PageStructure/Header";
 import Main from "./components/PageStructure/Main";
 import LoginLandingPage from "./components/LoginLandingPage/LoginLandingPage";
@@ -12,9 +12,24 @@ const App: React.FC = () => {
     setIsLoggedIn(true);
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem("playerInfo");
+    setIsLoggedIn(false);
+  };
+
+  useEffect(() => {
+    const playerInfo = sessionStorage.getItem("playerInfo");
+    console.log(playerInfo);
+    if (playerInfo) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
   return (
     <>
-      <Header />
+      <Header onLogout={handleLogout} isLoggedIn={isLoggedIn} />
       {isLoggedIn ? (
         <Main />
       ) : (

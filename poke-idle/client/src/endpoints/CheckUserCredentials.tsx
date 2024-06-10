@@ -24,6 +24,7 @@ export const checkUserCredentials = async (
     }
 
     console.log("Login Successful:", data);
+    sessionStorage.setItem("playerInfo", JSON.stringify(data.player));
     onLoginSuccess();
     return data;
   } catch (error) {

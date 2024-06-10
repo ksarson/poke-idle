@@ -30,12 +30,15 @@ const login = async (_req: Request, res: Response) => {
       });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
+    const { passwordHash, ...playerInfo } = user;
+    const isPasswordValid = await bcrypt.compare(password, passwordHash);
     const existingUser = await collection.findOne({ username });
     if (existingUser && isPasswordValid) {
-      return res
-        .status(200)
-        .json({ isSuccessful: true, message: "User Login Successful." });
+      return res.status(200).json({
+        isSuccessful: true,
+        message: "User Login Successful.",
+        player: playerInfo,
+      });
     }
   } catch (error) {
     if (error instanceof Error) {

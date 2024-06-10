@@ -18,7 +18,6 @@ const LoginLandingPage: React.FC<LoginLandingPageProps> = ({
   const passwordPattern =
     "^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{10,}$";
 
-  console.log(errorMessage);
   useEffect(() => {
     setUsername("");
     setPassword("");
