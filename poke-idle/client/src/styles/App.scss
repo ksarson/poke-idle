@@ -27,7 +27,11 @@ body,
 }
 
 main {
-  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.width-restricted-container {
+  max-width: $max-width;
   margin: 0 auto;
 }
 

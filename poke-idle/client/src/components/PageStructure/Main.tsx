@@ -1,16 +1,15 @@
 import "../../styles/PageStructure.scss";
-import React, { useEffect } from "react";
-import getPokemonsList from "../../api/getPokemonsList";
-import PlayerInfo from "../PlayerInfo/PlayerInfo";
+import React from "react";
+import PlayerInfo from "../GameAreaStructure/PlayerInfo";
+import GameMenus from "../GameAreaStructure/GameMenus";
+import PlayArea from "../GameAreaStructure/PlayArea";
 
 const Main: React.FC = () => {
-  useEffect(() => {
-    getPokemonsList();
-  }, []);
-
   return (
     <main>
       <PlayerInfo />
+      <PlayArea />
+      <GameMenus />
     </main>
   );
 };

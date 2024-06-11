@@ -4,12 +4,14 @@ import Header from "./components/PageStructure/Header";
 import Main from "./components/PageStructure/Main";
 import LoginLandingPage from "./components/LoginLandingPage/LoginLandingPage";
 import Footer from "./components/PageStructure/Footer";
+import getPokemonsList from "./api/getPokemonsList";
 
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
+    getPokemonsList();
   };
 
   const handleLogout = () => {

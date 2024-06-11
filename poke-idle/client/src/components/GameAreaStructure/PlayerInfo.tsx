@@ -1,4 +1,4 @@
-import "../../styles/PlayerInfo.scss";
+import "../../styles/GameAreaStructure.scss";
 import React from "react";
 import usePlayerInfoFromSession from "../../hooks/usePlayerInfoFromSession";
 
@@ -7,7 +7,7 @@ const PlayerInfo: React.FC = () => {
   return (
     <div className="player-info-container">
       {playerInfo && (
-        <>
+        <div className="width-restricted-container">
           <div className="player-info-item">
             <p>
               <strong>Trainer:</strong>
@@ -28,7 +28,7 @@ const PlayerInfo: React.FC = () => {
             <strong>Caught :</strong>
             {playerInfo.caught.length ? " " + playerInfo.caught.length : ""}
           </p>
-        </>
+        </div>
       )}
       {!playerInfo && <h6>No Player Info!</h6>}
     </div>
