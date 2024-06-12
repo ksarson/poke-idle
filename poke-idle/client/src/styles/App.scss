@@ -5,6 +5,7 @@
   src: url("../fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf");
 }
 
+// Base Styling
 html,
 body,
 #root {
@@ -15,6 +16,7 @@ body,
   background-color: $off-white;
 }
 
+// Font Rules
 #root {
   font-family: "Pixelify", Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
@@ -26,6 +28,12 @@ body,
   -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+  font-family: "Pixelify", Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+}
+
+// Additional Widths & Margins
 main {
   margin: 0 auto;
 }
@@ -40,11 +48,7 @@ footer {
   max-width: none;
 }
 
-button {
-  font-family: "Pixelify", Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
-}
-
+// Font Tags
 h1,
 h2,
 h3,
@@ -64,6 +68,7 @@ small {
   font-weight: 400;
 }
 
+// Font Tag Sizes
 h1 {
   font-size: 2.986rem;
 }

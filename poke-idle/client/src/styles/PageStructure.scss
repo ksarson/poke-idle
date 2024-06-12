@@ -1,5 +1,6 @@
 @import "Variables.scss";
 
+// Header
 header {
   background-color: $pokemon-light-blue;
   color: $pokemon-yellow;
@@ -26,7 +27,6 @@ header {
     max-width: 48px;
     background-color: $pokemon-light-blue;
     color: $pokemon-yellow;
-    font-size: $h3;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -37,10 +37,12 @@ header {
   }
 }
 
+// Main
 main {
   height: calc(100% - $header-height - $footer-height);
 }
 
+// Footer
 footer {
   background-color: $pokemon-light-blue;
   line-height: 1.5;

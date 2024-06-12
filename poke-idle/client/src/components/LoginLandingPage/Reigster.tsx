@@ -94,7 +94,7 @@ const Login: React.FC<RegisterProps> = ({
         )}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <button className="login-page-button" type="submit">
-          Register
+          <h5>Register</h5>
         </button>
       </form>
     </>

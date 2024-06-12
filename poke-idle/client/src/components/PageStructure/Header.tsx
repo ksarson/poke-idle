@@ -16,7 +16,9 @@ const Header: React.FC<HeaderProps> = ({ onLogout, isLoggedIn }) => {
       <h1 className="header-text">Pok&eacute; Idle</h1>
       {isLoggedIn && (
         <button className="logout-button" onClick={onLogout}>
-          <FontAwesomeIcon icon={faSignOutAlt} />
+          <h3>
+            <FontAwesomeIcon icon={faSignOutAlt} />
+          </h3>
         </button>
       )}
       {!isLoggedIn && <div className="spacer-div" />}

@@ -68,7 +68,7 @@ const Login: React.FC<LoginProps> = ({
         </h6>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <button className="login-page-button" type="submit">
-          Login
+          <h5>Login</h5>
         </button>
       </form>
     </>

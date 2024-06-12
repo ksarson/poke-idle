@@ -2,11 +2,13 @@
 
 .player-info-container,
 .play-area-container,
-.game-menus-container {
+.menu-popups-container,
+.menu-buttons-container {
   background-color: $off-white;
   position: relative;
 }
 
+// Player Info
 .player-info-container {
   height: $player-info-height;
   background-color: $pokeball-white;
@@ -31,15 +33,16 @@
   }
 }
 
+// Play Area
 .play-area-container {
   height: calc(100% - $player-info-height - $game-menus-height);
   z-index: 1;
 }
 
-.game-menus-container {
+// Menus
+.menu-buttons-container {
   height: $game-menus-height;
-  //box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  z-index: 11;
 
   .width-restricted-container {
     display: grid;
@@ -52,20 +55,79 @@
       height: 100%;
       background-color: $pokeball-white;
       color: $pokemon-dark-blue;
-      border: solid 1px $lightest-gray;
-      border-radius: 6px;
+      border: solid 1px $light-gray;
       font-size: $p;
       font-weight: 700;
       cursor: pointer;
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: $off-white;
+        background-color: $light-gray;
       }
     }
 
     .player-info-item {
       margin: 6px 0 0 0;
     }
+  }
+}
+
+.width-restricted-container {
+  position: relative;
+
+  .menu {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: $light-gray;
+    animation: slideIn 0.5s forwards;
+    z-index: 10;
+
+    .sub-menu-button {
+      border: none;
+      background-color: $light-gray;
+      color: $pokemon-dark-blue;
+      padding: 4px;
+
+      &:hover {
+        background-color: $lightest-gray;
+      }
+    }
+  }
+
+  .menu-button.active {
+    background-color: $lightest-gray;
+  }
+
+  .visit-menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .objectives-menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .player-menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info-menu {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
