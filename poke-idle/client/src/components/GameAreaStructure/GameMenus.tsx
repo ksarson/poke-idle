@@ -1,5 +1,6 @@
 import "../../styles/GameAreaStructure.scss";
 import React, { useEffect, useRef, useState } from "react";
+import GameSubMenu from "./GameSubMenu";
 
 const GameMenus: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -30,56 +31,18 @@ const GameMenus: React.FC = () => {
       <div className="menu-popups-container">
         <div className="width-restricted-container">
           {activeMenu === "visit" && (
-            <div className="menu visit-menu">
-              <button className="sub-menu-button">
-                <p>Visit Menu</p>
-              </button>
-              <button className="sub-menu-button">
-                <p>Visit Menu</p>
-              </button>
-              <button className="sub-menu-button">
-                <p>Visit Menu</p>
-              </button>
-            </div>
+            <GameSubMenu menuItemList={["Visit 1", "Visit 2", "Visit 3"]} />
           )}
           {activeMenu === "objectives" && (
-            <div className="menu objectives-menu">
-              <button className="sub-menu-button">
-                <p>Objectives Menu</p>
-              </button>
-              <button className="sub-menu-button">
-                <p>Objectives Menu</p>
-              </button>
-              <button className="sub-menu-button">
-                <p>Objectives Menu</p>
-              </button>
-            </div>
+            <GameSubMenu
+              menuItemList={["Objectives 1", "Objectives 2", "Objectives 3"]}
+            />
           )}
           {activeMenu === "player" && (
-            <div className="menu player-menu">
-              <button className="sub-menu-button">
-                <p>Player Menu</p>
-              </button>
-              <button className="sub-menu-button">
-                <p>Player Menu</p>
-              </button>
-              <button className="sub-menu-button">
-                <p>Player Menu</p>
-              </button>
-            </div>
+            <GameSubMenu menuItemList={["Player 1", "Player 2", "Player 3"]} />
           )}
           {activeMenu === "info" && (
-            <div className="menu info-menu">
-              <button className="sub-menu-button">
-                <p>Info Menu</p>
-              </button>
-              <button className="sub-menu-button">
-                <p>Info Menu</p>
-              </button>
-              <button className="sub-menu-button">
-                <p>Info Menu</p>
-              </button>
-            </div>
+            <GameSubMenu menuItemList={["Info 1", "Info 2", "Info 3"]} />
           )}
         </div>
       </div>
