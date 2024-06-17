@@ -4,7 +4,6 @@
 .play-area-container,
 .menu-popups-container,
 .menu-buttons-container {
-  background-color: $off-white;
   position: relative;
 }
 
@@ -35,11 +34,22 @@
 
 // Play Area
 .play-area-container {
+  display: flex;
+  align-items: center;
   height: calc(100% - $player-info-height - $game-menus-height);
   z-index: 1;
+
+  .width-restricted-container {
+    margin: auto;
+    background-color: $pokeball-white;
+    box-shadow: 0 2px 8px $lightest-gray;
+    border-radius: 12px;
+    height: 94%;
+    width: 94%;
+  }
 }
 
-// Menus
+// Menu Buttons
 .menu-buttons-container {
   height: $game-menus-height;
   z-index: 11;
@@ -55,7 +65,7 @@
       height: 100%;
       background-color: $pokeball-white;
       color: $pokemon-dark-blue;
-      border: solid 1px $light-gray;
+      border: solid 1px $lightest-gray;
       font-size: $p;
       font-weight: 700;
       cursor: pointer;
@@ -65,56 +75,50 @@
         background-color: $light-gray;
       }
     }
-
-    .player-info-item {
-      margin: 6px 0 0 0;
-    }
   }
 }
 
+// Sub Menus
 .width-restricted-container {
   position: relative;
 
   .menu {
     display: none;
     position: absolute;
-    bottom: 0;
+    bottom: 100%;
     width: 100%;
-    background-color: $light-gray;
+    background-color: $off-white;
+    border: 1px solid $lightest-gray;
     animation: slideIn 0.5s forwards;
     z-index: 10;
 
     .sub-menu-button {
       border: none;
-      background-color: $light-gray;
+      background-color: $off-white;
       color: $pokemon-dark-blue;
-      padding: 4px;
+      padding: 6px;
 
       &:hover {
-        background-color: $lightest-gray;
+        background-color: $light-gray;
+      }
+
+      &:first-child {
+        padding-top: 12px;
+      }
+
+      &:last-child {
+        padding-bottom: 12px;
       }
     }
   }
 
   .menu-button.active {
-    background-color: $lightest-gray;
+    background-color: $off-white;
   }
 
-  .visit-menu {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .objectives-menu {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .player-menu {
-    display: flex;
-    flex-direction: column;
-  }
-
+  .menu,
+  .objectives-menu,
+  .player-menu,
   .info-menu {
     display: flex;
     flex-direction: column;
@@ -124,10 +128,55 @@
 @keyframes slideIn {
   from {
     transform: translateY(100%);
-    opacity: 0;
   }
   to {
     transform: translateY(0);
-    opacity: 1;
   }
+}
+
+// Modal
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-title {
+  margin-bottom: 12px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+}
+
+.modal-content.small {
+  width: 300px;
+}
+
+.modal-content.medium {
+  width: 500px;
+}
+
+.modal-content.large {
+  width: 800px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }

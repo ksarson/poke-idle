@@ -1,0 +1,13 @@
+@import "Variables.scss";
+
+.home-base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(100% - calc($h4 * $line-height));
+
+  .home-base-object {
+    width: calc(50% - 10px);
+  }
+}

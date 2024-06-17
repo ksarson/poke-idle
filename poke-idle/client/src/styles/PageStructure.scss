@@ -2,6 +2,7 @@
 
 // Header
 header {
+  position: relative;
   background-color: $pokemon-light-blue;
   color: $pokemon-yellow;
   font-weight: 700;
@@ -9,6 +10,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 100;
 
   .spacer-div {
     flex: 1;
@@ -39,14 +41,18 @@ header {
 
 // Main
 main {
+  position: relative;
   height: calc(100% - $header-height - $footer-height);
+  z-index: 100;
 }
 
 // Footer
 footer {
+  position: relative;
   background-color: $pokemon-light-blue;
   line-height: 1.5;
   font-weight: 700;
   color: $pokemon-yellow;
   height: $footer-height;
+  z-index: 100;
 }

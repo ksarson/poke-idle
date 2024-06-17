@@ -1,8 +1,28 @@
 import "../../styles/GameAreaStructure.scss";
 import React, { useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
 import GameSubMenu from "./GameSubMenu";
 
-const GameMenus: React.FC = () => {
+interface MenuItem {
+  areaRoute: string;
+  name: string;
+  isModal: boolean;
+}
+
+interface GameMenusProps {
+  activeArea: { area: string; subArea: string | null };
+  setActiveArea: React.Dispatch<
+    React.SetStateAction<{ area: string; subArea: string | null }>
+  >;
+  setModalType: React.Dispatch<React.SetStateAction<string>>;
+  openModal: (title: string) => void;
+}
+
+const GameMenus: React.FC<GameMenusProps> = ({
+  setActiveArea,
+  setModalType,
+  openModal,
+}) => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -19,6 +39,19 @@ const GameMenus: React.FC = () => {
     }
   };
 
+  const handleSubMenuButtonClick = (
+    menuItem: MenuItem,
+    subArea: string | null
+  ) => {
+    if (menuItem.isModal) {
+      setModalType(menuItem.areaRoute);
+      openModal(menuItem.name);
+    } else {
+      console.log(`Button clicked: ${menuItem.name}`);
+      setActiveArea({ area: menuItem.areaRoute, subArea: subArea });
+    }
+  };
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => {
@@ -31,18 +64,52 @@ const GameMenus: React.FC = () => {
       <div className="menu-popups-container">
         <div className="width-restricted-container">
           {activeMenu === "visit" && (
-            <GameSubMenu menuItemList={["Visit 1", "Visit 2", "Visit 3"]} />
+            <GameSubMenu
+              menuType="visit"
+              menuItemList={[
+                { areaRoute: "homeBase", name: "Home Base", isModal: false },
+                { areaRoute: "routes", name: "Routes", isModal: true },
+                { areaRoute: "gyms", name: "Gyms", isModal: true },
+              ]}
+              handleSubMenuButtonClick={handleSubMenuButtonClick}
+              openModal={openModal}
+            />
           )}
           {activeMenu === "objectives" && (
             <GameSubMenu
-              menuItemList={["Objectives 1", "Objectives 2", "Objectives 3"]}
+              menuType={"objectives"}
+              menuItemList={[
+                { areaRoute: "homeBase", name: "Objectives 1", isModal: false },
+                { areaRoute: "homeBase", name: "Objectives 2", isModal: false },
+                { areaRoute: "homeBase", name: "Objectives 3", isModal: false },
+              ]}
+              handleSubMenuButtonClick={handleSubMenuButtonClick}
+              openModal={openModal}
             />
           )}
           {activeMenu === "player" && (
-            <GameSubMenu menuItemList={["Player 1", "Player 2", "Player 3"]} />
+            <GameSubMenu
+              menuType="player"
+              menuItemList={[
+                { areaRoute: "homeBase", name: "Player 1", isModal: false },
+                { areaRoute: "homeBase", name: "Player 2", isModal: false },
+                { areaRoute: "homeBase", name: "Player 3", isModal: false },
+              ]}
+              handleSubMenuButtonClick={handleSubMenuButtonClick}
+              openModal={openModal}
+            />
           )}
           {activeMenu === "info" && (
-            <GameSubMenu menuItemList={["Info 1", "Info 2", "Info 3"]} />
+            <GameSubMenu
+              menuType="info"
+              menuItemList={[
+                { areaRoute: "homeBase", name: "Info 1", isModal: false },
+                { areaRoute: "homeBase", name: "Info 2", isModal: false },
+                { areaRoute: "homeBase", name: "Info 2", isModal: false },
+              ]}
+              handleSubMenuButtonClick={handleSubMenuButtonClick}
+              openModal={openModal}
+            />
           )}
         </div>
       </div>
@@ -82,6 +149,16 @@ const GameMenus: React.FC = () => {
       </div>
     </>
   );
+};
+
+GameMenus.propTypes = {
+  activeArea: PropTypes.exact({
+    area: PropTypes.string.isRequired,
+    subArea: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
+  }).isRequired,
+  setActiveArea: PropTypes.func.isRequired,
+  setModalType: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 export default GameMenus;
