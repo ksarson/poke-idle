@@ -10,7 +10,7 @@
     "build": "npm run build-client && npm run build-server",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "start-dev": "vite --config vite.config.ts",
-    "start-node": "node dist/server.js"
+    "start-node": "node --experimental-json-modules dist/server.js"
   },
   "keywords": [],
   "author": "",

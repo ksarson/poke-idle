@@ -70,6 +70,11 @@ const GameMenus: React.FC<GameMenusProps> = ({
                 { areaRoute: "homeBase", name: "Home Base", isModal: false },
                 { areaRoute: "routes", name: "Routes", isModal: true },
                 { areaRoute: "gyms", name: "Gyms", isModal: true },
+                {
+                  areaRoute: "otherLocations",
+                  name: "Other Locations",
+                  isModal: true,
+                },
               ]}
               handleSubMenuButtonClick={handleSubMenuButtonClick}
               openModal={openModal}

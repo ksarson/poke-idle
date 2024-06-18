@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import HomeBase from "../HomeBase/HomeBase";
 import Routes from "../Routes/Routes";
 import Gyms from "../Gyms/Gyms";
+import OtherLocations from "../OtherLocations/OtherLocations";
 
 interface PlayAreaProps {
   activeArea: { area: string; subArea: string | null };
@@ -19,6 +20,9 @@ const PlayArea: React.FC<PlayAreaProps> = ({ activeArea }) => {
         {activeArea.area === "homeBase" && <HomeBase />}
         {activeArea.area === "routes" && <Routes activeArea={activeArea} />}
         {activeArea.area === "gyms" && <Gyms activeArea={activeArea} />}
+        {activeArea.area === "otherLocations" && (
+          <OtherLocations activeArea={activeArea} />
+        )}
       </div>
     </div>
   );

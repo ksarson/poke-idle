@@ -2,10 +2,10 @@ import express from "express";
 import cors from "cors";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import getPokemonsList from "./endpoints/get/getPokemonsList.js";
 import createUser from "./endpoints/post/createUser.js";
 import login from "./endpoints/post/login.js";
-//import populatePokemon from "./endpoints/post/populatePokemon.js";
+import getPokemonsList from "./endpoints/get/getPokemonsList.js";
+import getRegions from "./endpoints/get/getRegions.js";
 
 const app = express();
 
@@ -25,9 +25,6 @@ async function startServer() {
     const db = client.db(dbName).databaseName;
     console.log(`Cluster: ${db}`);
 
-    // Unused endpoints
-    // app.get("/api/pokemon/list", populatePokemon);
-
     // POST
     app.post("/api/users/create", createUser);
     app.post("/api/users/login", login);
@@ -36,6 +33,7 @@ async function startServer() {
 
     // GET
     app.get("/api/pokemon/list", getPokemonsList);
+    app.get("/api/regions/list", getRegions);
 
     // DELETE
 

@@ -1,53 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-
-const regions = [
-  {
-    name: "Kanto",
-    routes: ["Route 1", "Route 2", "Route 3"],
-    gyms: ["Gym 1", "Gym 2"],
-  },
-  {
-    name: "Johto",
-    routes: ["Route 29", "Route 30", "Route 31"],
-    gyms: ["Gym 1", "Gym 2"],
-  },
-  {
-    name: "Hoenn",
-    routes: ["Route 101", "Route 102", "Route 103"],
-    gyms: ["Gym 1", "Gym 2"],
-  },
-  {
-    name: "Sinnoh",
-    routes: ["Route 201", "Route 202", "Route 203"],
-    gyms: ["Gym 1", "Gym 2"],
-  },
-  {
-    name: "Unova",
-    routes: ["Route 19", "Route 20", "Route 21"],
-    gyms: ["Gym 1", "Gym 2"],
-  },
-  {
-    name: "Kalos",
-    routes: ["Route 1", "Route 2", "Route 3"],
-    gyms: ["Gym 1", "Gym 2"],
-  },
-  {
-    name: "Alola",
-    routes: ["Route 1", "Route 2", "Route 3"],
-    gyms: ["Gym 1", "Gym 2"],
-  },
-  {
-    name: "Galar",
-    routes: ["Route 1", "Route 2", "Route 3"],
-    gyms: ["Gym 1", "Gym 2"],
-  },
-  {
-    name: "Paldea",
-    routes: ["Route 1", "Route 2", "Route 3"],
-    gyms: ["Gym 1", "Gym 2"],
-  },
-];
+import useRegionsFromSession from "../../hooks/useRegionsFromSession";
+import { Region } from "../../types/Region";
 
 interface RoutesModalProps {
   modalType: string;
@@ -63,6 +17,7 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
   onClose,
 }) => {
   const [expandedRegion, setExpandedRegion] = useState<string | null>(null);
+  const regions = useRegionsFromSession();
 
   const toggleRegion = (region: string) => {
     setExpandedRegion(expandedRegion === region ? null : region);
@@ -71,50 +26,67 @@ const RoutesModal: React.FC<RoutesModalProps> = ({
   return (
     <>
       <div className="region-separated-modal">
-        {regions.map((region) => (
-          <div key={region.name} className="region">
-            <div
-              className="region-item"
-              onClick={() => toggleRegion(region.name)}
-            >
-              <span className="arrow">
-                {expandedRegion === region.name ? "▲" : "▼"}
-              </span>
-              {region.name}
-              <div className="spacer-div"></div>
-            </div>
-            {expandedRegion === region.name && (
-              <div className="region-sub-list">
-                {modalType === "routes" &&
-                  region.routes.map((route) => (
-                    <div
-                      key={route}
-                      className="region-sub-list-item"
-                      onClick={() => {
-                        setActiveArea({ area: "routes", subArea: route });
-                        onClose();
-                      }}
-                    >
-                      {route}
-                    </div>
-                  ))}
-                {modalType === "gyms" &&
-                  region.gyms.map((gym) => (
-                    <div
-                      key={gym}
-                      className="region-sub-list-item"
-                      onClick={() => {
-                        setActiveArea({ area: "gyms", subArea: gym });
-                        onClose();
-                      }}
-                    >
-                      {gym}
-                    </div>
-                  ))}
+        {regions &&
+          regions.map((region: Region) => (
+            <div key={region.name} className="region">
+              <div
+                className="region-item"
+                onClick={() => toggleRegion(region.name)}
+              >
+                <span className="arrow">
+                  {expandedRegion === region.name ? "▲" : "▼"}
+                </span>
+                {region.name}
+                <div className="spacer-div"></div>
               </div>
-            )}
-          </div>
-        ))}
+              {expandedRegion === region.name && (
+                <div className="region-sub-list">
+                  {modalType === "routes" &&
+                    region.routes.map((route: string) => (
+                      <div
+                        key={route}
+                        className="region-sub-list-item"
+                        onClick={() => {
+                          setActiveArea({ area: "routes", subArea: route });
+                          onClose();
+                        }}
+                      >
+                        {route}
+                      </div>
+                    ))}
+                  {modalType === "gyms" &&
+                    region.gyms.map((gym: string) => (
+                      <div
+                        key={gym}
+                        className="region-sub-list-item"
+                        onClick={() => {
+                          setActiveArea({ area: "gyms", subArea: gym });
+                          onClose();
+                        }}
+                      >
+                        {gym}
+                      </div>
+                    ))}
+                  {modalType === "otherLocations" &&
+                    region.otherLocations.map((otherLocation: string) => (
+                      <div
+                        key={otherLocation}
+                        className="region-sub-list-item"
+                        onClick={() => {
+                          setActiveArea({
+                            area: "otherLocations",
+                            subArea: otherLocation,
+                          });
+                          onClose();
+                        }}
+                      >
+                        {otherLocation}
+                      </div>
+                    ))}
+                </div>
+              )}
+            </div>
+          ))}
       </div>
     </>
   );
