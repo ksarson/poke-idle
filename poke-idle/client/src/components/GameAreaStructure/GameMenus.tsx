@@ -40,12 +40,10 @@ const GameMenus: React.FC<GameMenusProps> = ({ setModalType, openModal }) => {
     location: { name: string; displayName: string },
     region: Region
   ) => {
-    console.log("handleSubMenuButtonClick region: ", region);
     if (menuItem.isModal) {
       setModalType(menuItem.areaRoute);
       openModal(menuItem.name);
     } else {
-      console.log(`Button clicked: ${menuItem.name}`);
       setGlobalState({
         ...globalState,
         activeScreen: {

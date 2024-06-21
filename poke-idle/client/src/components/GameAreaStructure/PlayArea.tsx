@@ -8,7 +8,6 @@ import OtherLocations from "../OtherLocations/OtherLocations";
 
 const PlayArea: React.FC = () => {
   const { globalState } = useGlobalState();
-  console.log("globalState PlayArea: ", globalState);
   return (
     <div className="play-area-container">
       <div className="width-restricted-container">

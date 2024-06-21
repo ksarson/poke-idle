@@ -12,7 +12,6 @@ const RoutesModal: React.FC<RoutesModalProps> = ({ modalType, onClose }) => {
   const { globalState, setGlobalState } = useGlobalState();
   const [expandedRegion, setExpandedRegion] = useState<string | null>(null);
 
-  console.log("globalState RegionSeparatedModal: ", globalState);
   const toggleRegion = (region: string) => {
     setExpandedRegion(expandedRegion === region ? null : region);
   };

@@ -28,7 +28,6 @@ const GameSubMenu: React.FC<GameSubMenuProps> = ({
   handleSubMenuButtonClick,
 }) => {
   const { globalState } = useGlobalState();
-  console.log("globalState GameSubMenu: ", globalState);
   return (
     <>
       <div className={`menu ${menuType}-menu`}>
