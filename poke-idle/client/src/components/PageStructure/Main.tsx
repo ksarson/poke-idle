@@ -1,24 +1,37 @@
 import "../../styles/PageStructure.scss";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useGlobalState } from "../../context/GlobalStateContext";
+import useRegionsFromSession from "../../hooks/useRegionsFromSession";
+import usePlayerInfoFromSession from "../../hooks/usePlayerInfoFromSession";
 import PlayerInfo from "../GameAreaStructure/PlayerInfo";
 import GameMenus from "../GameAreaStructure/GameMenus";
 import PlayArea from "../GameAreaStructure/PlayArea";
 import Modal from "../Modal/Modal";
 import RegionSeparatedModal from "../Modal/RegionSeparatedModal";
 
-interface ActiveArea {
-  area: string;
-  subArea: string | null;
-}
-
 const Main: React.FC = () => {
+  const { globalState, setGlobalState } = useGlobalState();
+  let regions = useRegionsFromSession();
+  let playerInfo = usePlayerInfoFromSession();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState<string>("");
   const [modalTitle, setModalTitle] = useState<string>("");
-  const [activeArea, setActiveArea] = React.useState<ActiveArea>({
-    area: "homeBase",
-    subArea: null,
-  });
+
+  useEffect(() => {
+    if (regions !== null) {
+      setGlobalState((prevState) => ({
+        ...prevState,
+        regions: regions,
+      }));
+    }
+    if (playerInfo !== null) {
+      setGlobalState((prevState) => ({
+        ...prevState,
+        playerInfo: playerInfo,
+      }));
+    }
+  }, [regions, playerInfo]);
 
   const openModal = (title: string) => {
     setModalTitle(title);
@@ -33,24 +46,15 @@ const Main: React.FC = () => {
   return (
     <main>
       <PlayerInfo />
-      <PlayArea activeArea={activeArea} setActiveArea={setActiveArea} />
-      <GameMenus
-        activeArea={activeArea}
-        setActiveArea={setActiveArea}
-        setModalType={setModalType}
-        openModal={openModal}
-      />
+      <PlayArea />
+      <GameMenus setModalType={setModalType} openModal={openModal} />
       <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
         title={modalTitle}
         size="small"
       >
-        <RegionSeparatedModal
-          modalType={modalType}
-          setActiveArea={setActiveArea}
-          onClose={closeModal}
-        />
+        <RegionSeparatedModal modalType={modalType} onClose={closeModal} />
       </Modal>
     </main>
   );

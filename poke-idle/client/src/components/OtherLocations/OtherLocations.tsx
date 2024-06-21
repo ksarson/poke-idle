@@ -1,25 +1,17 @@
 import "../../styles/RegionSeparatedModal.scss";
 import React from "react";
-import PropTypes from "prop-types";
+import { useGlobalState } from "../../context/GlobalStateContext";
 
-interface OtherLocationsProps {
-  activeArea: { area: string; subArea: string | null };
-}
-
-const otherLocations: React.FC<OtherLocationsProps> = ({ activeArea }) => {
+const otherLocations: React.FC = () => {
+  const { globalState } = useGlobalState();
   return (
-    <div className="other-locations">
-      <h4>Other Location</h4>
-      {activeArea.subArea}
-    </div>
+    <>
+      <h4>Other Locations</h4>
+      <div className="other-locations">
+        {globalState.activeScreen?.currentLocation.displayName}
+      </div>
+    </>
   );
-};
-
-otherLocations.propTypes = {
-  activeArea: PropTypes.exact({
-    area: PropTypes.string.isRequired,
-    subArea: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
-  }).isRequired,
 };
 
 export default otherLocations;

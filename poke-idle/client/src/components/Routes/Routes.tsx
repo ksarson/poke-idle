@@ -1,25 +1,17 @@
 import "../../styles/RegionSeparatedModal.scss";
 import React from "react";
-import PropTypes from "prop-types";
+import { useGlobalState } from "../../context/GlobalStateContext";
 
-interface RoutesProps {
-  activeArea: { area: string; subArea: string | null };
-}
-
-const Routes: React.FC<RoutesProps> = ({ activeArea }) => {
+const Routes: React.FC = () => {
+  const { globalState } = useGlobalState();
   return (
     <>
       <h4>Routes</h4>
-      <div className="routes">{activeArea.subArea}</div>
+      <div className="routes">
+        {globalState.activeScreen?.currentLocation.displayName}
+      </div>
     </>
   );
-};
-
-Routes.propTypes = {
-  activeArea: PropTypes.exact({
-    area: PropTypes.string.isRequired,
-    subArea: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
-  }).isRequired,
 };
 
 export default Routes;

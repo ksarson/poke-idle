@@ -1,11 +1,12 @@
 import "./styles/App.scss";
 import React, { useState, useEffect } from "react";
+import { GlobalStateProvider } from "./context/GlobalStateContext";
+import getPokemonsList from "./api/getPokemonsList";
+import getRegions from "./api/getRegions";
 import Header from "./components/PageStructure/Header";
 import Main from "./components/PageStructure/Main";
 import LoginLandingPage from "./components/LoginLandingPage/LoginLandingPage";
 import Footer from "./components/PageStructure/Footer";
-import getPokemonsList from "./api/getPokemonsList";
-import getRegions from "./api/getRegions";
 
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,7 +24,6 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const playerInfo = sessionStorage.getItem("playerInfo");
-    console.log(playerInfo);
     if (playerInfo) {
       setIsLoggedIn(true);
     } else {
@@ -35,7 +35,9 @@ const App: React.FC = () => {
     <>
       <Header onLogout={handleLogout} isLoggedIn={isLoggedIn} />
       {isLoggedIn ? (
-        <Main />
+        <GlobalStateProvider>
+          <Main />
+        </GlobalStateProvider>
       ) : (
         <LoginLandingPage onLoginSuccess={handleLoginSuccess} />
       )}

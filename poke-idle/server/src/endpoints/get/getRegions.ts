@@ -3,13 +3,13 @@ import Pokedex from "pokedex-promise-v2";
 import validLocationsByRegion from "../../data/locations/validLocationsByRegion.json" assert { type: "json" };
 
 const P = new Pokedex();
-const regions = ["kanto", "johto"];
+const regions = ["kanto", "johto"]; // Currently Supported Regions
 
 interface ValidLocationsByRegion {
   [key: string]: {
-    routes: string[];
-    gyms: string[];
-    otherLocations: string[];
+    routes: { name: string; displayName: string }[];
+    gyms: { name: string; displayName: string }[];
+    otherLocations: { name: string; displayName: string }[];
   };
 }
 
@@ -26,9 +26,11 @@ const getRegions = async (_req: Request, res: Response) => {
 
       const filteredLocations = locations.filter(
         (location) =>
-          routes.includes(location.name) ||
-          gyms.includes(location.name) ||
-          otherLocations.includes(location.name)
+          routes.some((route) => route.name === location.name) ||
+          gyms.some((gym) => gym.name === location.name) ||
+          otherLocations.some(
+            (otherLocation) => otherLocation.name === location.name
+          )
       );
       return {
         name,

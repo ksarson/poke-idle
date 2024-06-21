@@ -1,6 +1,8 @@
 import "../../styles/GameAreaStructure.scss";
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import { useGlobalState } from "../../context/GlobalStateContext";
+import { Region } from "../../types/Region";
 import GameSubMenu from "./GameSubMenu";
 
 interface MenuItem {
@@ -10,19 +12,12 @@ interface MenuItem {
 }
 
 interface GameMenusProps {
-  activeArea: { area: string; subArea: string | null };
-  setActiveArea: React.Dispatch<
-    React.SetStateAction<{ area: string; subArea: string | null }>
-  >;
   setModalType: React.Dispatch<React.SetStateAction<string>>;
   openModal: (title: string) => void;
 }
 
-const GameMenus: React.FC<GameMenusProps> = ({
-  setActiveArea,
-  setModalType,
-  openModal,
-}) => {
+const GameMenus: React.FC<GameMenusProps> = ({ setModalType, openModal }) => {
+  const { globalState, setGlobalState } = useGlobalState();
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -41,14 +36,27 @@ const GameMenus: React.FC<GameMenusProps> = ({
 
   const handleSubMenuButtonClick = (
     menuItem: MenuItem,
-    subArea: string | null
+    gameArea: string,
+    location: { name: string; displayName: string },
+    region: Region
   ) => {
+    console.log("handleSubMenuButtonClick region: ", region);
     if (menuItem.isModal) {
       setModalType(menuItem.areaRoute);
       openModal(menuItem.name);
     } else {
       console.log(`Button clicked: ${menuItem.name}`);
-      setActiveArea({ area: menuItem.areaRoute, subArea: subArea });
+      setGlobalState({
+        ...globalState,
+        activeScreen: {
+          currentGameArea: gameArea,
+          currentLocation: {
+            name: location.name,
+            displayName: location.displayName,
+          },
+          currentRegion: region,
+        },
+      });
     }
   };
 
@@ -157,11 +165,6 @@ const GameMenus: React.FC<GameMenusProps> = ({
 };
 
 GameMenus.propTypes = {
-  activeArea: PropTypes.exact({
-    area: PropTypes.string.isRequired,
-    subArea: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
-  }).isRequired,
-  setActiveArea: PropTypes.func.isRequired,
   setModalType: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
 };
