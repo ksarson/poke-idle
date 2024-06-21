@@ -1,8 +1,8 @@
 import "./styles/App.scss";
 import React, { useState, useEffect } from "react";
-import { GlobalStateProvider } from "./context/GlobalStateContext";
-import getPokemonsList from "./api/getPokemonsList";
-import getRegions from "./api/getRegions";
+import { GlobalStateProvider } from "./contexts/GlobalStateContext";
+import getPokemonsList from "./apis/getPokemonsList";
+import getRegions from "./apis/getRegions";
 import Header from "./components/PageStructure/Header";
 import Main from "./components/PageStructure/Main";
 import LoginLandingPage from "./components/LoginLandingPage/LoginLandingPage";

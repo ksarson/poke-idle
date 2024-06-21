@@ -1,10 +1,8 @@
 import "../../styles/GameAreaStructure.scss";
 import React from "react";
-import { useGlobalState } from "../../context/GlobalStateContext";
+import { useGlobalState } from "../../contexts/GlobalStateContext";
 import HomeBase from "../HomeBase/HomeBase";
-import Routes from "../Routes/Routes";
-import Gyms from "../Gyms/Gyms";
-import OtherLocations from "../OtherLocations/OtherLocations";
+import PlayAreaGameContainer from "./PlayAreaGameContainer";
 
 const PlayArea: React.FC = () => {
   const { globalState } = useGlobalState();
@@ -14,10 +12,10 @@ const PlayArea: React.FC = () => {
         {globalState.activeScreen?.currentGameArea === "homeBase" && (
           <HomeBase />
         )}
-        {globalState.activeScreen?.currentGameArea === "routes" && <Routes />}
-        {globalState.activeScreen?.currentGameArea === "gyms" && <Gyms />}
-        {globalState.activeScreen?.currentGameArea === "otherLocations" && (
-          <OtherLocations />
+        {(globalState.activeScreen?.currentGameArea === "routes" ||
+          globalState.activeScreen?.currentGameArea === "gyms" ||
+          globalState.activeScreen?.currentGameArea === "otherLocations") && (
+          <PlayAreaGameContainer />
         )}
       </div>
     </div>

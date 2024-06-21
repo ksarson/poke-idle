@@ -1,7 +1,6 @@
 import "../../styles/GameAreaStructure.scss";
 import React from "react";
 import PropTypes from "prop-types";
-import { useGlobalState } from "../../context/GlobalStateContext";
 import { Region } from "../../types/Region";
 
 interface MenuItem {
@@ -27,7 +26,6 @@ const GameSubMenu: React.FC<GameSubMenuProps> = ({
   menuItemList,
   handleSubMenuButtonClick,
 }) => {
-  const { globalState } = useGlobalState();
   return (
     <>
       <div className={`menu ${menuType}-menu`}>

@@ -1,17 +1,8 @@
-import "../../styles/RegionSeparatedModal.scss";
+import "../../styles/OtherLocations.scss";
 import React from "react";
-import { useGlobalState } from "../../context/GlobalStateContext";
 
 const otherLocations: React.FC = () => {
-  const { globalState } = useGlobalState();
-  return (
-    <>
-      <h4>Other Locations</h4>
-      <div className="other-locations">
-        {globalState.activeScreen?.currentLocation.displayName}
-      </div>
-    </>
-  );
+  return <div className="other-location">Testing</div>;
 };
 
 export default otherLocations;

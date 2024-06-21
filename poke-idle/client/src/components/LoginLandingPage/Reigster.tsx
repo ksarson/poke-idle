@@ -1,8 +1,8 @@
 import "../../styles/LoginLandingPage.scss";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import createUser from "../../api/createUser";
-import checkUserCredentials from "../../api/checkUserCredentials";
+import createUser from "../../apis/createUser";
+import checkUserCredentials from "../../apis/checkUserCredentials";
 
 interface RegisterProps {
   username: string;

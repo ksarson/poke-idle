@@ -1,7 +1,7 @@
 import "../../styles/LoginLandingPage.scss";
 import React from "react";
 import PropTypes from "prop-types";
-import checkUserCredentials from "../../api/checkUserCredentials";
+import checkUserCredentials from "../../apis/checkUserCredentials";
 
 interface LoginProps {
   username: string;

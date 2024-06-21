@@ -1,6 +1,6 @@
 import "../../styles/PageStructure.scss";
 import React, { useEffect, useState } from "react";
-import { useGlobalState } from "../../context/GlobalStateContext";
+import { useGlobalState } from "../../contexts/GlobalStateContext";
 import useRegionsFromSession from "../../hooks/useRegionsFromSession";
 import usePlayerInfoFromSession from "../../hooks/usePlayerInfoFromSession";
 import PlayerInfo from "../GameAreaStructure/PlayerInfo";
@@ -10,7 +10,7 @@ import Modal from "../Modal/Modal";
 import RegionSeparatedModal from "../Modal/RegionSeparatedModal";
 
 const Main: React.FC = () => {
-  const { globalState, setGlobalState } = useGlobalState();
+  const { setGlobalState } = useGlobalState();
   let regions = useRegionsFromSession();
   let playerInfo = usePlayerInfoFromSession();
 

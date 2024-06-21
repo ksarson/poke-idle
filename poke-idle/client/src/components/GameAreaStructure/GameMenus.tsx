@@ -1,7 +1,7 @@
 import "../../styles/GameAreaStructure.scss";
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { useGlobalState } from "../../context/GlobalStateContext";
+import { useGlobalState } from "../../contexts/GlobalStateContext";
 import { Region } from "../../types/Region";
 import GameSubMenu from "./GameSubMenu";
 

@@ -6,6 +6,7 @@ import createUser from "./endpoints/post/createUser.js";
 import login from "./endpoints/post/login.js";
 import getPokemonsList from "./endpoints/get/getPokemonsList.js";
 import getRegions from "./endpoints/get/getRegions.js";
+import getPartnerPokemon from "./endpoints/get/getPartnerPokemon.js";
 
 const app = express();
 
@@ -34,6 +35,7 @@ async function startServer() {
     // GET
     app.get("/api/pokemon/list", getPokemonsList);
     app.get("/api/regions/list", getRegions);
+    app.get("/api/pokemon/partnerPokemon", getPartnerPokemon);
 
     // DELETE
 

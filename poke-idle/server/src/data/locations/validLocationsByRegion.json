@@ -28,15 +28,15 @@
       { "name": "kanto-route-25", "displayName": "Route 25" }
     ],
     "gyms": [
-      { "name": "pewter-city", "displayName": "Pewter City" },
-      { "name": "cerulean-city", "displayName": "Cerulean City" },
-      { "name": "vermilion-city", "displayName": "Vermilion City" },
-      { "name": "celadon-city", "displayName": "Celadon City" },
-      { "name": "fuchsia-city", "displayName": "Fuchsia City" },
-      { "name": "saffron-city", "displayName": "Saffron City" },
-      { "name": "cinnabar-island", "displayName": "Cinnabar Island" },
-      { "name": "viridian-city", "displayName": "Viridian City" },
-      { "name": "indigo-plateau", "displayName": "Indigo Plateau" }
+      { "name": "pewter-city", "displayName": "Pewter City Gym" },
+      { "name": "cerulean-city", "displayName": "Cerulean City Gym" },
+      { "name": "vermilion-city", "displayName": "Vermilion City Gym" },
+      { "name": "celadon-city", "displayName": "Celadon City Gym" },
+      { "name": "fuchsia-city", "displayName": "Fuchsia City Gym" },
+      { "name": "saffron-city", "displayName": "Saffron City Gym" },
+      { "name": "cinnabar-island", "displayName": "Cinnabar Island Gym" },
+      { "name": "viridian-city", "displayName": "Viridian City Gym" },
+      { "name": "indigo-plateau", "displayName": "Indigo Plateau Elite 4" }
     ],
     "otherLocations": [
       { "name": "pallet-town", "displayName": "Pallet Town" },
@@ -78,14 +78,14 @@
       { "name": "johto-route-48", "displayName": "Route 48" }
     ],
     "gyms": [
-      { "name": "violet-city", "displayName": "Violet City" },
-      { "name": "azalea-town", "displayName": "Azalea Town" },
-      { "name": "goldenrod-city", "displayName": "Goldenrod City" },
-      { "name": "ecruteak-city", "displayName": "Ecruteak City" },
-      { "name": "cianwood-city", "displayName": "Cianwood City" },
-      { "name": "olivine-city", "displayName": "Olivine City" },
-      { "name": "mahogany-town", "displayName": "Mahogany Town" },
-      { "name": "blackthorn-city", "displayName": "Blackthorn City" }
+      { "name": "violet-city", "displayName": "Violet City Gym" },
+      { "name": "azalea-town", "displayName": "Azalea Town Gym" },
+      { "name": "goldenrod-city", "displayName": "Goldenrod City Gym" },
+      { "name": "ecruteak-city", "displayName": "Ecruteak City Gym" },
+      { "name": "cianwood-city", "displayName": "Cianwood City Gym" },
+      { "name": "olivine-city", "displayName": "Olivine City Gym" },
+      { "name": "mahogany-town", "displayName": "Mahogany Town Gym" },
+      { "name": "blackthorn-city", "displayName": "Blackthorn City Gym" }
     ],
     "otherLocations": [
       { "name": "new-bark-town", "displayName": "New Bark Town" },

@@ -1,6 +1,7 @@
+import "../../styles/RegionSeparatedModal.scss";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useGlobalState } from "../../context/GlobalStateContext";
+import { useGlobalState } from "../../contexts/GlobalStateContext";
 import { Region } from "../../types/Region";
 
 interface RoutesModalProps {
