@@ -1,22 +1,19 @@
-//import axios from "axios";
+import axios from "axios";
 import { Pokemon } from "../types/Pokemon";
 
-const getPartnerPokemon: () => Promise<Pokemon> = async () => {
+const getPartnerPokemon = async (pokemonName: string): Promise<Pokemon> => {
   try {
     console.log("Fetching partner pokemon from server...");
-    const response = await fetch(
-      "http://localhost:3000/api/pokemon/partnerPokemon",
+    const response = await axios.get<Pokemon>(
+      `http://localhost:3000/api/pokemon/partnerPokemon/${pokemonName}`,
       {
-        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
+        params: { pokemonName: pokemonName },
       }
     );
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data: Pokemon = await response.json();
+    const data = response.data;
     sessionStorage.setItem("partnerPokemon", JSON.stringify(data));
     console.log("Partner pokemon fetched successfully:", data);
     return data;

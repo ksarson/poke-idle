@@ -2,18 +2,22 @@ import "./styles/App.scss";
 import React, { useState, useEffect } from "react";
 import { GlobalStateProvider } from "./contexts/GlobalStateContext";
 import getPokemonsList from "./apis/getPokemonsList";
+import getPartnerPokemon from "./apis/getPartnerPokemon";
 import getRegions from "./apis/getRegions";
+import usePlayerInfoFromSession from "./hooks/usePlayerInfoFromSession";
 import Header from "./components/PageStructure/Header";
 import Main from "./components/PageStructure/Main";
 import LoginLandingPage from "./components/LoginLandingPage/LoginLandingPage";
 import Footer from "./components/PageStructure/Footer";
 
 const App: React.FC = () => {
+  const playerInfo = usePlayerInfoFromSession();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
     getPokemonsList();
+    getPartnerPokemon(playerInfo?.party[0] as string);
     getRegions();
   };
 

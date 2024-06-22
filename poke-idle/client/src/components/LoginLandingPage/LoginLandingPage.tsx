@@ -15,6 +15,7 @@ const LoginLandingPage: React.FC<LoginLandingPageProps> = ({
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const usernamePattern = "^[a-zA-Z0-9!@#$%^&*?]{1,16}$";
   const passwordPattern =
     "^(?=.*[0-9])(?=.*[!@#$%^&*?])[a-zA-Z0-9!@#$%^&*?]{10,}$";
 
@@ -64,6 +65,7 @@ const LoginLandingPage: React.FC<LoginLandingPageProps> = ({
           defineErrorMessage={(message: string) => defineErrorMessage(message)}
           errorMessage={errorMessage}
           onUsernameChange={handleUsernameChange}
+          usernamePattern={usernamePattern}
           onPasswordChange={handlePasswordChange}
           passwordPattern={passwordPattern}
         />

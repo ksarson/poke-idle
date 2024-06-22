@@ -21,13 +21,14 @@
     padding: 0 0 4px 0;
 
     .player-info-items-container {
+      flex: 1;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
       align-items: center;
 
       p {
         height: 20px;
+        text-align: left;
       }
 
       .player-info-item-long {

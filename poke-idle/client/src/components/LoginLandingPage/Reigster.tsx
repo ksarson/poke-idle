@@ -12,6 +12,7 @@ interface RegisterProps {
   defineErrorMessage: (message: string) => void;
   errorMessage: string;
   onUsernameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  usernamePattern: string;
   onPasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   passwordPattern: string;
 }
@@ -24,6 +25,7 @@ const Login: React.FC<RegisterProps> = ({
   defineErrorMessage,
   errorMessage,
   onUsernameChange,
+  usernamePattern,
   onPasswordChange,
   passwordPattern,
 }) => {
@@ -72,6 +74,8 @@ const Login: React.FC<RegisterProps> = ({
               value={username}
               onChange={onUsernameChange}
               required
+              pattern={usernamePattern}
+              title="Password must be at no longer than 16 characters, containing only alphanumeric characters or any of (!@#$%^&*?)"
             />
           </label>
         </h6>
@@ -109,6 +113,7 @@ Login.propTypes = {
   defineErrorMessage: PropTypes.func.isRequired,
   errorMessage: PropTypes.string.isRequired,
   onUsernameChange: PropTypes.func.isRequired,
+  usernamePattern: PropTypes.string.isRequired,
   onPasswordChange: PropTypes.func.isRequired,
   passwordPattern: PropTypes.string.isRequired,
 };

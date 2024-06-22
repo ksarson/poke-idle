@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const checkUserCredentials = async (
   username: string,
   password: string,
@@ -5,26 +7,21 @@ export const checkUserCredentials = async (
 ) => {
   try {
     console.log("Logging in User...");
-
-    const response = await fetch("http://localhost:3000/api/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    const response = await axios.post(
+      "http://localhost:3000/api/users/login",
+      {
         username,
         password,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || `HTTP error! status: ${response.status}`);
-    }
-
-    console.log("Login Successful:", data);
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.data;
     sessionStorage.setItem("playerInfo", JSON.stringify(data.player));
+    console.log("Login Successful:", data);
     onLoginSuccess();
     return data;
   } catch (error) {

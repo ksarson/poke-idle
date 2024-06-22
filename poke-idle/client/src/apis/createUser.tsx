@@ -1,24 +1,21 @@
+import axios from "axios";
+
 const createUser = async (username: string, password: string) => {
   try {
     console.log("Creating User...");
-
-    const response = await fetch("http://localhost:3000/api/users/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    const response = await axios.post(
+      "http://localhost:3000/api/users/create",
+      {
         username,
         password,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || `HTTP error! status: ${response.status}`);
-    }
-
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = response.data;
     console.log("User Created Successfully:", data);
     return data;
   } catch (error) {

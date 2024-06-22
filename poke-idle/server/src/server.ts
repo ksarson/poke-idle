@@ -35,7 +35,7 @@ async function startServer() {
     // GET
     app.get("/api/pokemon/list", getPokemonsList);
     app.get("/api/regions/list", getRegions);
-    app.get("/api/pokemon/partnerPokemon", getPartnerPokemon);
+    app.get("/api/pokemon/partnerPokemon/:pokemonName", getPartnerPokemon);
 
     // DELETE
 
