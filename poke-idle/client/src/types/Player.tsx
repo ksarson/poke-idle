@@ -1,10 +1,11 @@
 export interface Player {
-  caught: string[];
+  username: string;
   createdAt: Date;
   lastLogin: Date;
   level: number;
-  party: string[];
   seen: string[];
-  username: string;
+  caught: string[];
+  partner: string;
+  party: string[];
   _id: string;
 }

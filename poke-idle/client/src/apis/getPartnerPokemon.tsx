@@ -1,8 +1,15 @@
 import axios from "axios";
 import { Pokemon } from "../types/Pokemon";
 
-const getPartnerPokemon = async (pokemonName: string): Promise<Pokemon> => {
+const getPartnerPokemon = async (
+  pokemonName: string | undefined
+): Promise<Pokemon> => {
   try {
+    if (!pokemonName) {
+      console.log("Player has no Partner Pokemon.");
+      return {} as Pokemon;
+    }
+
     console.log("Fetching partner pokemon from server...");
     const response = await axios.get<Pokemon>(
       `http://localhost:3000/api/pokemon/partnerPokemon/${pokemonName}`,

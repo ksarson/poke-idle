@@ -1,17 +1,17 @@
 import "../../styles/GameAreaStructure.scss";
-import React, { ReactNode } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-interface ModalProps {
+interface ActionRequiredModalProps {
   isOpen: boolean;
   onClose: () => void;
   size?: "small" | "medium" | "large";
   title?: string;
-  children: ReactNode;
+  children: React.ReactNode;
   disableOutsideClick?: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({
+const ActionRequiredModal: React.FC<ActionRequiredModalProps> = ({
   isOpen,
   onClose,
   size = "medium",
@@ -33,9 +33,6 @@ const Modal: React.FC<ModalProps> = ({
         className={`modal-content ${size}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="modal-close" onClick={onClose}>
-          &times;
-        </button>
         {title && <h3 className="modal-title">{title}</h3>}
         {children}
       </div>
@@ -43,7 +40,7 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 
-Modal.propTypes = {
+ActionRequiredModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   size: PropTypes.oneOf(["small", "medium", "large"]),
@@ -52,4 +49,4 @@ Modal.propTypes = {
   disableOutsideClick: PropTypes.bool,
 };
 
-export default Modal;
+export default ActionRequiredModal;

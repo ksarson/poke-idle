@@ -14,6 +14,7 @@ db.createCollection("users", {
         "level",
         "seen",
         "caught",
+        "partner",
         "party",
       ],
       properties: {
@@ -52,6 +53,10 @@ db.createCollection("users", {
           },
           description: "Array of Pokémon names that the player has caught",
         },
+        partner: {
+          bsonType: "string",
+          description: "Name of the player's partner pokemon",
+        },
         party: {
           bsonType: "array",
           items: {
@@ -64,4 +69,4 @@ db.createCollection("users", {
   },
 });
 
-db.players.createIndex({ username: 1 }, { unique: true });
+db.users.createIndex({ username: 1 }, { unique: true });

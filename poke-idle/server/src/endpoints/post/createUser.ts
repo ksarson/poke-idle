@@ -15,6 +15,7 @@ const createUser = async (_req: Request, res: Response) => {
     const collection = db.collection(collectionName);
 
     const { username, password } = _req.body;
+    console.log(username, password);
 
     if (!username || !password) {
       return res.status(400).json({
@@ -40,6 +41,7 @@ const createUser = async (_req: Request, res: Response) => {
       level: 1,
       seen: [],
       caught: [],
+      partner: "",
       party: [],
     };
 
