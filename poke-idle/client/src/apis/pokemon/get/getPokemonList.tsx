@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getPokemonsList = async () => {
+const getPokemonList = async () => {
   try {
     console.log("Fetching pokemon list from server...");
     const response = await axios.get("http://localhost:3000/api/pokemon/list", {
@@ -17,4 +17,4 @@ const getPokemonsList = async () => {
   }
 };
 
-export default getPokemonsList;
+export default getPokemonList;

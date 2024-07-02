@@ -1,14 +1,10 @@
 import axios from "axios";
 
-export const checkUserCredentials = async (
-  username: string,
-  password: string,
-  onLoginSuccess: () => void
-) => {
+const createUser = async (username: string, password: string) => {
   try {
-    console.log("Logging in User...");
+    console.log("Creating User...");
     const response = await axios.post(
-      "http://localhost:3000/api/users/login",
+      "http://localhost:3000/api/users/create",
       {
         username,
         password,
@@ -20,13 +16,11 @@ export const checkUserCredentials = async (
       }
     );
     const data = await response.data;
-    sessionStorage.setItem("playerInfo", JSON.stringify(data.player));
-    console.log("Login Successful:", data);
-    onLoginSuccess();
+    console.log("User Created Successfully:", data);
     return data;
   } catch (error) {
     if (error instanceof Error) {
-      console.error("Error logging in:", error.message);
+      console.error("Error creating account:", error.message);
       return { message: error.message };
     } else {
       console.error("Unexpected error:", error);
@@ -35,4 +29,4 @@ export const checkUserCredentials = async (
   }
 };
 
-export default checkUserCredentials;
+export default createUser;

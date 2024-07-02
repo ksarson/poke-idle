@@ -3,13 +3,13 @@ import { Player } from "../types/Player";
 
 export const usePlayerInfoFromSession = () => {
   const [playerInfo, setPlayerInfo] = useState<Player | null>(null);
+  const storedPlayerInfo = sessionStorage.getItem("playerInfo");
 
   useEffect(() => {
-    const storedPlayerInfo = sessionStorage.getItem("playerInfo");
-    if (storedPlayerInfo) {
+    if (storedPlayerInfo && storedPlayerInfo !== "undefined") {
       setPlayerInfo(JSON.parse(storedPlayerInfo));
     }
-  }, []);
+  }, [storedPlayerInfo]);
 
   return playerInfo;
 };

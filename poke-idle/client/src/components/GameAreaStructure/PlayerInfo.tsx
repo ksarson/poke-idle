@@ -1,11 +1,15 @@
 import "../../styles/GameAreaStructure.scss";
-import React from "react";
+import React, { useEffect } from "react";
 import usePlayerInfoFromSession from "../../hooks/usePlayerInfoFromSession";
 import usePartnerPokemonFromSession from "../../hooks/usePartnerPokemonFromSession";
 
 const PlayerInfo: React.FC = () => {
   const playerInfo = usePlayerInfoFromSession();
   const partnerPokemon = usePartnerPokemonFromSession();
+
+  useEffect(() => {
+    console.log("test");
+  }, [playerInfo, partnerPokemon]);
 
   return (
     <div className="player-info-container">
@@ -28,7 +32,7 @@ const PlayerInfo: React.FC = () => {
 
             <p className="player-info-item-short">
               <strong>Level :</strong>
-              {playerInfo.level ? " " + playerInfo.level : ""}
+              {" " + playerInfo.level}
             </p>
 
             <div className="player-info-item-long">
@@ -45,12 +49,11 @@ const PlayerInfo: React.FC = () => {
 
             <p className="player-info-item-short">
               <strong>Caught :</strong>
-              {playerInfo.caught.length ? " " + playerInfo.caught.length : ""}
+              {" " + playerInfo.caught.length}
             </p>
           </div>
         </div>
       )}
-      {!playerInfo && <h6>No Player Info!</h6>}
     </div>
   );
 };

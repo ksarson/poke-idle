@@ -4,9 +4,11 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 import createUser from "./endpoints/post/createUser.js";
 import login from "./endpoints/post/login.js";
-import getPokemonsList from "./endpoints/get/getPokemonsList.js";
+import getPokemonList from "./endpoints/get/getPokemonList.js";
 import getRegions from "./endpoints/get/getRegions.js";
+import getPokemonByName from "./endpoints/get/getPokemonByName.js";
 import getPartnerPokemon from "./endpoints/get/getPartnerPokemon.js";
+import setPartnerPokemon from "./endpoints/post/setPartnerPokemon.js";
 
 const app = express();
 
@@ -31,11 +33,13 @@ async function startServer() {
     app.post("/api/users/login", login);
 
     // PUT
+    app.put("/api/pokemon/partnerPokemon/update", setPartnerPokemon);
 
     // GET
-    app.get("/api/pokemon/list", getPokemonsList);
+    app.get("/api/pokemon/list", getPokemonList);
     app.get("/api/regions/list", getRegions);
-    app.get("/api/pokemon/partnerPokemon/:pokemonName", getPartnerPokemon);
+    app.get("/api/pokemon/:pokemonName", getPokemonByName);
+    app.get("/api/pokemon/partnerPokemon/get/:pokemonName", getPartnerPokemon);
 
     // DELETE
 

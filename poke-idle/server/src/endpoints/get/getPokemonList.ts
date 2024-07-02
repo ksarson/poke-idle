@@ -3,7 +3,7 @@ import Pokedex from "pokedex-promise-v2";
 
 const P = new Pokedex();
 
-const getPokemonsList = async (_req: Request, res: Response) => {
+const getPokemonList = async (_req: Request, res: Response) => {
   try {
     console.log("Fetching pokemon list from server...");
     const pokemon = await P.getPokemonsList();
@@ -18,4 +18,4 @@ const getPokemonsList = async (_req: Request, res: Response) => {
   }
 };
 
-export default getPokemonsList;
+export default getPokemonList;

@@ -1,9 +1,11 @@
 import React, { createContext, useState, useContext, ReactNode } from "react";
 import { Player } from "../types/Player";
 import { Region } from "../types/Region";
+import { Pokemon } from "../types/Pokemon";
 
 interface GlobalState {
   playerInfo: Player | null;
+  partnerPokemon: Pokemon | null;
   regions: Region[] | null;
   activeScreen: {
     currentGameArea: string;
@@ -29,6 +31,7 @@ export const GlobalStateProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [globalState, setGlobalState] = useState<GlobalState>({
     playerInfo: null,
+    partnerPokemon: null,
     regions: null,
     activeScreen: {
       currentGameArea: "homeBase",

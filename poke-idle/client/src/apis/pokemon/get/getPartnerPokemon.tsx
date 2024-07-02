@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Pokemon } from "../types/Pokemon";
+import { Pokemon } from "../../../types/Pokemon";
 
 const getPartnerPokemon = async (
   pokemonName: string | undefined
@@ -12,7 +12,7 @@ const getPartnerPokemon = async (
 
     console.log("Fetching partner pokemon from server...");
     const response = await axios.get<Pokemon>(
-      `http://localhost:3000/api/pokemon/partnerPokemon/${pokemonName}`,
+      `http://localhost:3000/api/pokemon/partnerPokemon/get/${pokemonName}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -20,7 +20,7 @@ const getPartnerPokemon = async (
         params: { pokemonName: pokemonName },
       }
     );
-    const data = response.data;
+    const data = await response.data;
     sessionStorage.setItem("partnerPokemon", JSON.stringify(data));
     console.log("Partner pokemon fetched successfully:", data);
     return data;

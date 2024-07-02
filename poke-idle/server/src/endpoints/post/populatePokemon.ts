@@ -29,14 +29,13 @@ const populatePokemonData = async (_req: Request, res: Response) => {
 
     const pokemonList: PokemonList = await P.getPokemonsList({ limit: 1025 });
     const pokemonNamesList = pokemonList.results.map((pokemon) => pokemon.name);
-    console.log("pokemonNamesList: ", pokemonNamesList);
 
     for (const pokemonName of pokemonNamesList) {
       const pokemonData = await fetchPokemonData(pokemonName);
       await collection.updateOne(
         { id: pokemonData.id },
         { $set: pokemonData },
-        { upsert: true } // Use upsert to avoid duplicates
+        { upsert: true }
       );
     }
 
@@ -53,48 +52,7 @@ const populatePokemonData = async (_req: Request, res: Response) => {
 
 const fetchPokemonData = async (name: string) => {
   try {
-    console.log("name: ", name);
     const pokemon = await P.getPokemonByName(name as string);
-    //console.log("pokemon: ", pokemon);
-    // console.log("id ", pokemon.id);
-    // console.log("name ", pokemon.name);
-    // console.log("base_experience ", pokemon.base_experience);
-    // console.log("height ", pokemon.height);
-    // console.log("is_default ", pokemon.is_default);
-    // console.log("order ", pokemon.order);
-    // console.log("weight ", pokemon.weight);
-    // console.log(
-    //   "abilities ",
-    //   pokemon.abilities.map((ability) => ability.ability.name)
-    // );
-    // console.log(
-    //   "forms ",
-    //   pokemon.forms.map((form) => form.name)
-    // );
-    // console.log(
-    //   "game_indices ",
-    //   pokemon.game_indices.map((index) => index.version.name)
-    // );
-    // console.log(
-    //   "held_items ",
-    //   pokemon.held_items.map((item) => item.item.name)
-    // );
-    // console.log("location_area_encounter ", pokemon.location_area_encounters);
-    // console.log(
-    //   "moves ",
-    //   pokemon.moves.map((move) => move.move.name)
-    // );
-    // console.log("sprites ", pokemon.sprites.front_default);
-    // console.log("cries ", pokemon.cries.latest);
-    // console.log("species ", pokemon.species.name);
-    // console.log(
-    //   "stats ",
-    //   pokemon.stats.find((stat) => stat.stat.name === "hp")?.base_stat as number
-    // );
-    // console.log(
-    //   "types ",
-    //   pokemon.types.map((type) => type.type.name)
-    // );
     return {
       id: pokemon.id,
       name: pokemon.name,

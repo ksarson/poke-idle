@@ -1,0 +1,12 @@
+{
+  "kanto": [
+    { "name": "bulbasaur", "displayName": "Bulbasaur" },
+    { "name": "charmander", "displayName": "Charmander" },
+    { "name": "squirtle", "displayName": "Squirtle" }
+  ],
+  "johto": [
+    { "name": "chikorita", "displayName": "Chikorita" },
+    { "name": "cyndaquil", "displayName": "Cyndaquil" },
+    { "name": "totodile", "displayName": "Totodile" }
+  ]
+}

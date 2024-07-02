@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Pokemon } from "../types/Pokemon";
 
-export const usePartnerPokemonFromSession = () => {
+export const usePartnerPokemonFromSession = (): Pokemon | null => {
   const [partnerPokemon, setPartnerPokemon] = useState<Pokemon | null>(null);
+  const storedPartnerPokemon = sessionStorage.getItem("partnerPokemon");
 
   useEffect(() => {
-    const partnerPokemon = sessionStorage.getItem("partnerPokemon");
-    if (partnerPokemon) {
-      setPartnerPokemon(JSON.parse(partnerPokemon));
+    if (storedPartnerPokemon && storedPartnerPokemon !== "undefined") {
+      setPartnerPokemon(JSON.parse(storedPartnerPokemon));
     }
-  }, []);
+  }, [storedPartnerPokemon]);
 
   return partnerPokemon;
 };

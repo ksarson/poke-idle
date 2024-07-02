@@ -9,13 +9,16 @@ const client = new MongoClient(process.env.MONGODB_URI as string);
 const dbName = "pokeIdleDb";
 const collectionName = "users";
 
-const createUser = async (_req: Request, res: Response) => {
+const createUser = async (
+  req: Request<{ username: string; password: string }>,
+  res: Response
+) => {
   try {
     const db: Db = client.db(dbName);
     const collection = db.collection(collectionName);
 
-    const { username, password } = _req.body;
-    console.log(username, password);
+    const username = req.body.username;
+    const password = req.body.password;
 
     if (!username || !password) {
       return res.status(400).json({

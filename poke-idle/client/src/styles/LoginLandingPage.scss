@@ -75,3 +75,67 @@ main {
     background-color: $pokemon-dark-blue;
   }
 }
+
+// STARTER POKEMON
+.starter-pokemon-list {
+  display: flex;
+  flex-direction: column;
+
+  .starters-container {
+    margin: 0 0 16px 0;
+    padding: 0;
+
+    .starter-pokemon-button {
+      margin: 0 6px;
+      padding: 0;
+      height: 84px;
+      width: 84px;
+      border: solid 2px $pokemon-dark-blue;
+      border-radius: 0.25rem;
+      box-shadow: 0 2px 8px $lightest-gray;
+      cursor: pointer;
+      transition: border 0.3s ease, background-color 0.3s ease;
+
+      &:hover {
+        border: dashed 2px $pokemon-dark-blue;
+        background-color: $lightest-gray;
+      }
+
+      .starter-pokemon-img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.confirm-partner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .confirm-partner-text {
+    margin-bottom: 18px;
+  }
+
+  .partner-confirmation-button-container {
+    .confirm-button,
+    .cancel-button {
+      margin: 0.5rem 1rem;
+      padding: 0.5rem 1rem;
+      background-color: $pokemon-light-blue;
+      color: $pokemon-yellow;
+      border: none;
+      border-radius: 0.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $pokemon-dark-blue;
+      }
+    }
+  }
+}
